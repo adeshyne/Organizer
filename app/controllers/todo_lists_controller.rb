@@ -1,10 +1,11 @@
 class TodoListsController < ApplicationController
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :create]
+  before_action :set_todo_list, only: [:show, :new, :edit, :update, :destroy,]
 
   # GET /todo_lists
   # GET /todo_lists.json
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = TodoList.all.order('created_at DESC')
   end
 
   # GET /todo_lists/1

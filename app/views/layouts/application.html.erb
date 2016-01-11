@@ -10,9 +10,26 @@
 </head>
 <body>
 
+<div id="sidebar">
+
+		<% if !user_signed_in? %>
+		<button class="sign_in"><%= link_to "Register", new_user_session_path %></button>
+		<% end %>
+		
+	</div>
+
+	<div id="main_content">
+		<div id="header">
+			
+				
+
+				<button class="button"><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></button>
+
 <div class="container">
 	<%= yield %>
 </div>
+
+
 
 </body>
 </html>
